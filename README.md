@@ -3,11 +3,11 @@ Repo untuk laporan tugas 1 PKSJ
 
 **Anggota Kelompok**
 
-| NRP         | Nama                     |
-|-------------|--------------------------|
-| 5114100024  | Ovan                     |
-| 5114100097  | Abdul Majid Hasani       |
-| 5114100122  | Bayu Sektiaji            |
+| NRP         | Nama                        |
+|-------------|-----------------------------|
+| 5114100024  | Setyassida Novian Putra D   |
+| 5114100097  | Abdul Majid Hasani          |
+| 5114100122  | Bayu Sektiaji               |
 
 ## Laporan Tugas 1
 
@@ -70,7 +70,17 @@ sudo apt-get install openssh
 ```
 9. Install ncrack pada **Ubuntu 15.04** dengan command
 ```
-INI BELOM GAN
+wget http://nmap.org/ncrack/dist/ncrack-0.4ALPHA.tar.gz
+
+sudo apt-get install build-essential checkinstall libssl-dev  libssh-dev
+ 
+tar xvfz ncrack-0.4ALPHA.tar.gz
+ 
+cd ncrack-0.4ALPHA/ ./configure
+make
+checkinstall
+dpkg -i ncrack_0.4ALPHA-1_amd64.deb
+
 ```
 #### 2. Penambahan User
 1. Tambahkan 2 user pada **Ubuntu Server 14.10** dengan password yang berbeda. Alasan mengapa kami menambahkan 2 user adalah 1 user akan memiliki password yang ada di file untuk dibrute force, untuk user satunya memiliki password yang tidak ada di file.
