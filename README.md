@@ -160,6 +160,7 @@ maxretry = 3
 
 **NOTE**
 * Konfigurasi Fail2Ban setelah selesai melakukan penetrasi dengan konfigurasi server
+* Maksud dari findtime = 60 dan maxretry = 3 adalah user yang melebihi batas percobaan login 3 kali (max try 3) dalam 60 detik akan diban selama 600 detik
 
 ##### Penetrasi dengan Hydra
 1. Gunakan command **Hydra** untuk melakukan brute force dengan command
