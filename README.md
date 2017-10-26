@@ -5,9 +5,9 @@ Repo untuk laporan tugas 1 PKSJ
 
 | NRP         | Nama                     |
 |-------------|--------------------------|
-| 5113100050  | Freddy Hermawan Y        |
-| 5113100109  | Daniel Fablius           |
-| 5113100113  | Muhamad Luthfie La Roeha |
+| 5114100024  | Ovan                     |
+| 5114100097  | Abdul Majid Hasani       |
+| 5114100122  | Bayu Sektiaji            |
 
 ## Laporan Tugas 1
 
