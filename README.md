@@ -5,7 +5,7 @@ Repo untuk laporan tugas 1 PKSJ
 
 | NRP         | Nama                     |
 |-------------|--------------------------|
-| 5114100024  | Ovan                     |
+| 5114100024  | Setyassida Novian Putra D|
 | 5114100097  | Abdul Majid Hasani       |
 | 5114100122  | Bayu Sektiaji            |
 
