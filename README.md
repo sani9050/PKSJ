@@ -109,6 +109,7 @@ Hasil yang akan didapat adalah:
 
 
 **NOTE**
+* Command dimasukkan pada sisi host
 * Username yang ditarget harus sama dengan username yang ada di server
 * Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
 * Untuk percobaan ini ip server adalah **192.168.1.10**
@@ -122,6 +123,7 @@ Hasil yang akan didapat adalah:
 
 
 **NOTE**
+* Command dimasukkan pada sisi host
 * Username yang ditarget harus sama dengan username yang ada di server
 * Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
 * Untuk percobaan ini ip server adalah **192.168.1.20**
@@ -129,9 +131,95 @@ Hasil yang akan didapat adalah:
 ##### Penetrasi dengan Ncrack
 
 #### Penetrasi 2
+Untuk penetrasi 2, dilakukan 4 skenario pada setiap tools, yaitu
+1. Lakukan brute force terhadap user 'ovan' menggunakan list password pada file password.txt dan merubah konfigurasi server ssh
+2. Lakukan brute force terhadap user 'ovan' menggunakan list password pada file password.txt dan menggunakan fail2ban
+3. Lakukan brute force terhadap user 'sekbay' menggunakan list password pada file password.txt dan merubah konfigurasi server ssh
+4. Lakukan brute force terhadap user 'sekbay' menggunakan list password pada file password.txt dan menggunakan fail2ban
+
+##### Konfigurasi SSH Server
+1. Lakukan perubahan dengan membuka file **sshd_config** yang ada di dalam folder **/etc/ssh/**
+```
+nano /etc/ssh/sshd_config
+```
+2. Ubah line **PasswordAuthentication** dari  **yes** menjadi **no**
+![Config Server](Server/password_auth_no.png)
+
+**NOTE**
+* Konfigurasi di atas membuat semua user yang terdaftar pada ssh server tidak menggunakan password lagi
 
 ##### Konfigurasi Fail2Ban
+1. Setelah instalasi dari fail2ban, lakukan konfigurasi pada file **jail.conf** yang ada di **/etc/fail2ban/jail.conf**
+2. Ubah 2 line di dalam fail2ban menjadi
+```
+findtime = 60
+maxretry = 3
+```
+3. Hasil yang akan didapat sebagai berikut
+![Config Fail2Ban](Fail2Ban/fail2ban.png)
+
+**NOTE**
+* Konfigurasi Fail2Ban setelah selesai melakukan penetrasi dengan konfigurasi server
+
 ##### Penetrasi dengan Hydra
+1. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l ovan -P password.txt 192.168.1.40 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 2 Ovan Server](Penetrasi_2/penetrasi_2_ovan_server.png)
+
+
+**NOTE**
+* Command dimasukkan pada sisi host
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.40**
+
+2. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l ovan -P password.txt 192.168.1.60 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 2 Ovan Fail2Ban](Penetrasi_2/penetrasi_2_ovan_fail2ban_#2.png)
+
+
+**NOTE**
+* Command dimasukkan pada sisi host
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.60**
+* Pastikan konfigurasi fail2ban telah diubah
+
+3. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l sekbay -P password.txt 192.168.1.40 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 2 Sekbay Server](Penetrasi_2/penetrasi_2_sekbay_server.png)
+
+
+**NOTE**
+* Command dimasukkan pada sisi host
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.40**
+
+4. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l sekbay -P password.txt 192.168.1.40 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 2 Sekbay Fail2Ban](Penetrasi_2/penetrasi_2_sekbay_fail2ban.png)
+
+
+**NOTE**
+* Command dimasukkan pada sisi host
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.40**
+* Pastikan konfigurasi fail2ban telah diubah
+
 ##### Penetrasi dengan Ncrack
 
 ### Kesimpulan dan Saran
