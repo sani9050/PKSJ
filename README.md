@@ -95,9 +95,37 @@ sudo adduser sekbay
 Untuk penetrasi, dibutuhkan 1 file yang berisi password testing.
 ![Password](Password/password.png)
 #### Penetrasi 1
-Untuk penetrasi 1, dilakukan
+Untuk penetrasi 1, dilakukan 2 skenario pada setiap tools, yaitu
+1. Lakukan brute force terhadap user 'ovan' menggunakan list password pada file password.txt
+2. Lakukan brute force terhadap user 'sekbay' menggunakan list password pada file password.txt
 
 ##### Penetrasi dengan Hydra
+1. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l ovan -P password.txt 192.168.1.10 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 1 Ovan](Penetrasi_1/penetrasi_1_ovan.png)
+
+
+**NOTE**
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.10**
+
+2. Gunakan command **Hydra** untuk melakukan brute force dengan command
+```
+hydra -l sekbay -P password.txt 192.168.1.20 ssh
+```
+Hasil yang akan didapat adalah:
+![Penetrasi 1 Sekbay](Penetrasi_1/penetrasi_1_sekbay.png)
+
+
+**NOTE**
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.20**
+
 ##### Penetrasi dengan Ncrack
 
 #### Penetrasi 2
