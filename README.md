@@ -79,8 +79,6 @@ tar xvfz ncrack-0.4ALPHA.tar.gz
 cd ncrack-0.4ALPHA/ ./configure
 make
 checkinstall
-dpkg -i ncrack_0.4ALPHA-1_amd64.deb
-
 ```
 #### 2. Penambahan User
 1. Tambahkan 2 user pada **Ubuntu Server 14.10** dengan password yang berbeda. Alasan mengapa kami menambahkan 2 user adalah 1 user akan memiliki password yang ada di file untuk dibrute force, untuk user satunya memiliki password yang tidak ada di file.
@@ -139,6 +137,19 @@ Hasil yang akan didapat adalah:
 * Untuk percobaan ini ip server adalah **192.168.1.20**
 
 ##### Penetrasi dengan Ncrack
+1. Gunakan command **NCrack** untuk melakukan brute force dengan command
+```
+ncrack -p 22 --user sekbay -P password.txt 192.168.1.197
+```
+Hasil yang akan didapat adalah:
+![NCrack Sekbay](ncrack/ncrack.png)
+
+
+**NOTE**
+* Command dimasukkan pada sisi host
+* Username yang ditarget harus sama dengan username yang ada di server
+* Pastikan command **NCrack** dijalankan di direktori yang terdapat file **password.txt**
+* Untuk percobaan ini ip server adalah **192.168.1.97**
 
 #### Penetrasi 2
 Untuk penetrasi 2, dilakukan 4 skenario pada setiap tools, yaitu
@@ -230,8 +241,6 @@ Hasil yang akan didapat adalah:
 * Pastikan command **Hydra** dijalankan di direktori yang terdapat file **password.txt**
 * Untuk percobaan ini ip server adalah **192.168.1.40**
 * Pastikan konfigurasi fail2ban telah diubah
-
-##### Penetrasi dengan Ncrack
 
 ### Kesimpulan dan Saran
 
