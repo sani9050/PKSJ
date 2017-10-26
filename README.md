@@ -39,8 +39,10 @@ SSH brute force attack adalah saat seorang di luar sistem ingin masuk ke dalam s
 * **Ubuntu Server** adalah ubuntu yang didesain untuk diinstall di server. Perbedaan mendasar, di Ubuntu Server tidak tersedia GUI. Jika ingin menggunakan ubuntu server artinya user harus bekerja dengan perintah-perintah di layar hitam yang sering disebut konsole. (http://www.candra.web.id/mengenal-ubuntu-server/)
 
 **2. Tools yang Digunakan**
+
 *Server Tools*
-* **OpenSSH Server** adalah component, sshd, yang melakukan linten secara kontinue untuk koneksi dengan klien dari tool-tool yang dimiliki oleh klien. saat klien melakukan request. sshd melakukan set up koneksi yang tepat disesuaikan dengan tool klien 
+* **OpenSSH Server** adalah component, sshd, yang melakukan linten secara kontinue untuk koneksi dengan klien dari tool-tool yang dimiliki oleh klien. saat klien melakukan request. sshd melakukan set up koneksi yang tepat disesuaikan dengan tool klien (https://help.ubuntu.com/lts/serverguide/openssh-server.html) 
+
 *Cracking Tools*
 * **Hydra** adalah sebuah proyek software yang dikembangkan oleh sebuah organisasi bernama "The Hacker's Choice" (THC) yang menggunakan brute force dan dictionary attack untuk menguji untuk password yang lemah atau password sederhana pada satu atau banyak host remote menjalankan berbagai layanan yang berbeda. Ia dirancang sebagai bukti untuk menunjukkan kemudahan cracking password karena password yang dipilih buruk. (http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2010-2011/Makalah2010/MakalahStima2010-062.pdf)
 
