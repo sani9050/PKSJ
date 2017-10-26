@@ -181,7 +181,7 @@ Hasil yang akan didapat adalah:
 hydra -l ovan -P password.txt 192.168.1.60 ssh
 ```
 Hasil yang akan didapat adalah:
-![Penetrasi 2 Ovan Fail2Ban](Penetrasi_2/penetrasi_2_ovan_fail2ban_#2.png)
+![Penetrasi 2 Ovan Fail2Ban](Penetrasi_2/penetrasi_2_ovan_fail2ban_%232.png)
 
 
 **NOTE**
