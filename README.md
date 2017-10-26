@@ -5,7 +5,7 @@ Repo untuk laporan tugas 1 PKSJ
 
 | NRP         | Nama                     |
 |-------------|--------------------------|
-| 5114100024  | Setyassida Novian Putra D|
+| 5114100024  | Ovan                     |
 | 5114100097  | Abdul Majid Hasani       |
 | 5114100122  | Bayu Sektiaji            |
 
@@ -41,9 +41,9 @@ SSH brute force attack adalah saat seorang di luar sistem ingin masuk ke dalam s
 **2. Tools yang Digunakan**
 
 *Cracking Tools*
-* **Hydra** * adalah sebuah proyek software yang dikembangkan oleh sebuah organisasi bernama "The Hacker's Choice" (THC) yang menggunakan brute force dan dictionary attack untuk menguji untuk password yang lemah atau password sederhana pada satu atau banyak host remote menjalankan berbagai layanan yang berbeda. Ia dirancang sebagai bukti untuk menunjukkan kemudahan cracking password karena password yang dipilih buruk. (http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2010-2011/Makalah2010/MakalahStima2010-062.pdf)
+* **Hydra** adalah sebuah proyek software yang dikembangkan oleh sebuah organisasi bernama "The Hacker's Choice" (THC) yang menggunakan brute force dan dictionary attack untuk menguji untuk password yang lemah atau password sederhana pada satu atau banyak host remote menjalankan berbagai layanan yang berbeda. Ia dirancang sebagai bukti untuk menunjukkan kemudahan cracking password karena password yang dipilih buruk. (http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2010-2011/Makalah2010/MakalahStima2010-062.pdf)
 
-* **Ncrack** * adalah alat berkecepatan tinggi scaning jaringan retak .Ncrack dibuat untuk membantu perusahaan dan untuk mengamankan jaringan mereka secara proaktif menguji semua host dan perangkat jaringan dengan password yang buruk. (http://mr-nyepik.blogspot.co.id/2014/04/download-ncrack-network-cracking-tools.html)
+* **Ncrack** adalah alat berkecepatan tinggi scaning jaringan retak .Ncrack dibuat untuk membantu perusahaan dan untuk mengamankan jaringan mereka secara proaktif menguji semua host dan perangkat jaringan dengan password yang buruk. (http://mr-nyepik.blogspot.co.id/2014/04/download-ncrack-network-cracking-tools.html)
 
 *Defending Tool*
 * **Fail2Ban** adalah aplikasi log-parsing yang memonitor log sistem untuk mengindentifikasi serangan yang terjadi di server. Saat terjadi serangan, berdasarkan parameter yang sudah diatur sebelumnya, Fail2ban akan menambahkan rule baru ke iptables sehingga memblok IP address dari penyerang, baik untuk periode tertentu maupun secara permanen. (http://www.biznetgiocloud.com/konfigurasi-fail2ban-untuk-mengamankan-server/)
@@ -51,12 +51,51 @@ SSH brute force attack adalah saat seorang di luar sistem ingin masuk ke dalam s
 ### Persiapan
 
 #### 1. Langkah Instalasi Ubuntu dan Ubuntu Server
+1. OS yang kami gunakan untuk tugas 1 ini adalah Ubuntu 15.04 dan Ubuntu Server 14.10.
+2. Untuk image Ubuntu 15.04 dapat didownload di (https://virtualboxes.org/images/ubuntu/)
+3. Untuk image Ubuntu  Server 14.10 dapat didownload di (https://virtualboxes.org/images/ubuntu-server/)
+4. Untuk VirtualBox dapat didownload di (https://www.virtualbox.org/wiki/Downloads)
+5. Untuk konfigurasi yang dilakukan di dalam VirtualBox adalah mengganti koneksi dari image ke Bridged  Adapter dan mengubah alokasi memori untuk per image sesuai dengan kebutuhan.
+6. Lakukan update untuk kedua OS dengan command
+```
+sudo apt-get update
+```
+7. Install hydra pada **Ubuntu 15.04** dengan command
+```
+sudo apt-get install hydra
+```
+8. Install openssh (jika belum ada) pada **Ubuntu Server 14.10** dengan command
+```
+sudo apt-get install openssh
+```
+9. Install ncrack pada **Ubuntu 15.04** dengan command
+```
+INI BELOM GAN
+```
 #### 2. Penambahan User
+1. Tambahkan 2 user pada **Ubuntu Server 14.10** dengan password yang berbeda. Alasan mengapa kami menambahkan 2 user adalah 1 user akan memiliki password yang ada di file untuk dibrute force, untuk user satunya memiliki password yang tidak ada di file.
+2. Untuk user pertama tambahkan dengan command, lalu ikuti langkah langkah selanjutnya, untuk user pertama akan ditambah dengan username **ovan** dengan password **ovanovan**. Password dari user pertama ada pada password yang dites pada file brute force
+```
+sudo adduser ovan
+```
+![Add User 1](Penambahan_User/adduser_ovan.png)
+
+
+3. Untuk user kedua tambahkan dengan command, lalu ikuti langkah langkah selanjutnya, untuk user kedua akan ditambah dengan username **sekbay** dengan password **gandalf**. Password dari user kedua tidak ada di file brute force
+```
+sudo adduser sekbay
+```
+![Add User 2](Penambahan_User/adduser_sekbay.png)
+
 #### 3. Konfigurasi Server
+1. Untuk server mengikuti konfigurasi ip sesuai dengan user
+2. Server dan host harus dalam 1 subnet
 
 ### Penetrasi
-
+Untuk penetrasi, dibutuhkan 1 file yang berisi password testing.
+![Password](Password/password.png)
 #### Penetrasi 1
+Untuk penetrasi 1, dilakukan
 
 ##### Penetrasi dengan Hydra
 ##### Penetrasi dengan Ncrack
