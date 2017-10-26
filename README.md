@@ -243,6 +243,7 @@ Hasil yang akan didapat adalah:
 * Pastikan konfigurasi fail2ban telah diubah
 
 ### Kesimpulan dan Saran
+* Ketika penetrasi dilakukan dengan NCrack dimana service FILE 2 BAN di server side sedang running, host side dapat menemukan password yang dari user yang ingin kita cari, akan tetapi secara otomatis ip address dari host side akan di banned sehingga tidak dapat melakukan komunikasi dengan server side.
 
 
 
