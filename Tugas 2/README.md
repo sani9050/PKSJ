@@ -1,5 +1,4 @@
-# PKSJ
-Repo untuk laporan tugas 1 PKSJ
+# Laporan Tugas 2
 
 **Anggota Kelompok**
 
@@ -9,27 +8,22 @@ Repo untuk laporan tugas 1 PKSJ
 | 5114100097  | Abdul Majid Hasani          |
 | 5114100122  | Bayu Sektiaji               |
 
-## Laporan Tugas 1
-
-**Uji Penetrasi 1 :**
-* Install sebuah virtual OS dengan Ubuntu Server
-* Install SSH server dengan konfigurasi default
-* Install satu lagi virtual OS dengan OS bebas
-* Pastikan tools untuk SSH brute force attack sudah terinstall
-* Lakukan uji penetrasi 1: dengan THC-Hydra / Ncrack dan catat hasil uji penetrasi 1
-
-**Uji Penetrasi 2 :**
-* Install fail2ban pada Ubuntu server yang telah diinstall SSH servernya
-* Konfigurasilah SSH server agar tidak menggunakan setting default lagi
-* Lakukan uji penetrasi 2 dengan tools yang sama dan catat hasilnya
 
 ### Pendahuluan
 
-SSH(Secure Shell) adalah  sebuah protokol jaringan kriptografi untuk komunikasi data yang aman, login antarmuka baris perintah, perintah eksekusi jarak jauh, dan layanan jaringan lainnya antara dua jaringan komputer. Ini terkoneksi, melalui saluran aman atau melalui jaringan tidak aman, server dan klien menjalankan server SSH dan SSH program klien secara masing-masing.
-Terdapat 2 versi SSH yaitu SSH 1 dan SSH 2. bedanya terletak pada mencakup kedua fitur keamanan dan peningkatan perbaikan tingkat keamanan yang disediakan.
-Sebagai contoh, applikasi menggunakan ssh adalah openssh.(https://id.wikipedia.org/wiki/SSH)
+Pada Tugas 2 PKSJ ini, penulis diminta untuk melakukan uji coba vulnerability plug-in Wordpress.
 
-SSH brute force attack adalah saat seorang di luar sistem ingin masuk ke dalam sistem yang memiliki username dan password dengan menggunakan 1 list file yang isinya adalah kumpulan dari kemungkinan password untuk username tersebut. Sehingga diperlukan waktu yang cukup lama untuk melakukan proses brute force dan itu juga terdapat kemungkinan password tidak cocok dengan password sebenarnya. (https://en.wikipedia.org/wiki/Brute-force_attack)
+Berikut beberapa Plug-in yang akan penulis uji:
+* Wordpress Video Player
+* League Manager
+* Wordpress Event Calendar
+* Simple Photo Gallery
+
+Berikut beberapa Tools yang kami gunakan dalam tugas ini:
+*WPScan
+*SQLMap
+*Nikto
+*The Mole
 
 ### Dasar Teori
 
@@ -40,16 +34,32 @@ SSH brute force attack adalah saat seorang di luar sistem ingin masuk ke dalam s
 
 **2. Tools yang Digunakan**
 
-*Server Tools*
-* **OpenSSH Server** adalah component, sshd, yang melakukan linten secara kontinue untuk koneksi dengan klien dari tool-tool yang dimiliki oleh klien. saat klien melakukan request. sshd melakukan set up koneksi yang tepat disesuaikan dengan tool klien (https://help.ubuntu.com/lts/serverguide/openssh-server.html) 
+* **Wordpress** adalah sebuah aplikasi sumber terbuka (open source) yang sangat populer digunakan sebagai mesin blog (blog engine). WordPress dibangun dengan bahasa pemrograman PHP dan basis data (database) MySQL. PHP dan MySQL, keduanya merupakan perangkat lunak sumber terbuka (open source software)
+(https://id.wordpress.org) 
 
-*Cracking Tools*
-* **Hydra** adalah sebuah proyek software yang dikembangkan oleh sebuah organisasi bernama "The Hacker's Choice" (THC) yang menggunakan brute force dan dictionary attack untuk menguji untuk password yang lemah atau password sederhana pada satu atau banyak host remote menjalankan berbagai layanan yang berbeda. Ia dirancang sebagai bukti untuk menunjukkan kemudahan cracking password karena password yang dipilih buruk. (http://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2010-2011/Makalah2010/MakalahStima2010-062.pdf)
+* **Plug-in : Wordpress Video Player** adalah plugin Wordpress untuk menambahkan, mengatur dan menampilkan video. Ternyata plugin ini dapat dieksploitasi menggunakan blind SQL Injection. Pada referensi disebutkan bahwa dengan menggunakan multiple blind SQL Injenction, user yang dapat login ke dashboard Wordpress dapat mengekstrak informasi dari user lainnya, seperti panjang password bahkan seluruh hash password dari user tersebut.
+(https://wordpress.org/plugins/player/)
 
-* **Ncrack** adalah alat berkecepatan tinggi scaning jaringan retak .Ncrack dibuat untuk membantu perusahaan dan untuk mengamankan jaringan mereka secara proaktif menguji semua host dan perangkat jaringan dengan password yang buruk. (http://mr-nyepik.blogspot.co.id/2014/04/download-ncrack-network-cracking-tools.html)
+* **Plug-in : League Manager** adalah plugin wordpress untuk management liga sepakbola di halaman wordpress.Ternyata plugin ini dapat dieksploitasi menggunakan blind SQL Injection. Pada referensi disebutkan bahwa dengan menggunakan multiple blind SQL Injenction, user yang dapat login ke dashboard Wordpress dapat mengekstrak informasi dari user lainnya, seperti panjang password bahkan seluruh hash password dari user tersebut.
+(https://wordpress.org/plugins/leaguemanager/)
 
-*Defending Tool*
-* **Fail2Ban** adalah aplikasi log-parsing yang memonitor log sistem untuk mengindentifikasi serangan yang terjadi di server. Saat terjadi serangan, berdasarkan parameter yang sudah diatur sebelumnya, Fail2ban akan menambahkan rule baru ke iptables sehingga memblok IP address dari penyerang, baik untuk periode tertentu maupun secara permanen. (http://www.biznetgiocloud.com/konfigurasi-fail2ban-untuk-mengamankan-server/)
+* **Plug-in : Wordpress Event Calendar** adalah plugin Wordpress yang memungkinkan kita untuk membuat kalender kegiatan dengan mudah. Plugin ini dilengkapi dengan banyak fitur seperti mengubah tema kalender, dll. Plugin ini dipublikasikan secara gratis.
+(https://wordpress.org/plugins/the-events-calendar/)
+
+* **Plug-in : Simple Photo Gallery** adalah plugin Wordpress yang memungkinkan kita untuk membuat gallery photo dengan mudah dan cepat. Plugin ini dipublikasikan secara gratis.
+(https://wordpress.org/plugins/simple-photo-gallery/)
+
+* **WPScan** merupakan tools vulnerability scanner untuk CMS Wordpress yang ditulis dengan menggunakan bahasa pemrograman ruby, WPScan mampu mendeteksi kerentanan umum serta daftar semua plugin dan themes yang digunakan oleh sebuah website yang menggunakan CMS Wordpress.
+(http://anher323.blogspot.co.id/2016/01/cek-celah-vulnerability-cms-wordpress.html)
+
+* **SQLMap** adalah tools opensource yang mendeteksi dan melakukan exploit pada bug SQL injection secara otomatis. dengan melakukan serangan SQL injection seorang attacker dapat mengambil alih serta memanipulasi sebuah database di dalam sebuah server.
+(https://rixzaldi.wordpress.com/2016/12/28/tutorial-sql-injection-menggunakan-sql-map/)
+
+* **Nikto** adalah web scanner Open Source (GPL), yang melakukan tes komprehensif terhadap web server. Nikto memiliki kemampuan mendeteksi 3500 file yang berpotensi mendatangkan bahaya / CGIS. Nikto dapat menguji web server dengan cepat, tetapi mudah dilihat pada log. Tapi sangat berguna untuk menguji suatu web server. Menurut saya nikto ini pembaca web server yang memiliki celah keamanan CVE maupun OSVDB (Open Source Vulnerability Data Base).
+(https://rixzaldi.wordpress.com/2017/01/04/nikto-web-vulnerability-scanner/)
+
+* **The Mole** adalah automatic SQL injection berbasis bahasa python. Fungsi kerjanya sama dengan sqlmap, menjadi tool alternatif dari sqlmap.
+
 
 ### Persiapan
 
