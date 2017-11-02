@@ -185,19 +185,16 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/
 #### Langkah-langkah NIKTO
 1. Install nikto
 ```
-
 apt-get install nikto
 ```
 
 2. Update nikto
 ```
-
 nikto -update
 ```
 
 3. Jalankan nikto dengan command dibawah ini
 ```
-
 nikto -h 192.168.3.5
 ```
 
@@ -210,13 +207,11 @@ nikto -h 192.168.3.5
 #### Langkah-langkah SQLmap
 1. Download sqlmap
 ```
-
 git clone https://github.com/sqlmapproject/sqlmap.git
 ```
 
 2. Untuk menjalankan wpscan, masukan command di bawah ini
 ```
-
 python sqlmap.py -u 'http://192.168.3.5/?match=1' --level 5 --risk 2 --dbms mysql
 ```
 
@@ -229,25 +224,21 @@ python sqlmap.py -u 'http://192.168.3.5/?match=1' --level 5 --risk 2 --dbms mysq
 #### Langkah-langkah WPSCAN
 1. Install dependencies pada ubuntu
 ```
-
 sudo apt-get install gcc git ruby2.3 ruby2.3-dev libcurl4-openssl-dev make zlib1g-dev
 ```
 
 2. Download wpscan
 ```
-
 git clone https://github.com/wpscanteam/wpscan.git
 ```
 
 3. Masuk ke dalam folder wpscan lalu install wpscan dengan command
 ```
-
 sudo gem install bundler && bundle install --without test
 ```
 
 4. Untuk menjalankan wpscan, masukan command di bawah ini
 ```
-
 ruby wpscan.rb -u 192.168.3.5 --enumerate vp
 ```
 
