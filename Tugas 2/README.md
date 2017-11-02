@@ -74,8 +74,15 @@ Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 sudo apt-get update
 ```
 #### 2. Langkah Instalasi Wordpress
-1. 
 
+##### a. Setting MYSQL
+-> 1 2
+##### b. Setting Apache2 + Dependencies
+-> 4 7 8 9 10
+##### c. Setting Wordpress
+-> 3 5 6 11 12 13 14
+##### d. Install Plugin
+-> 15
 ### Kesimpulan dan Saran
 * Terdapat Beberapa cara untuk pengamanan sebuah server dari serangan bruteforce. pertama memilih password server yang susah untuk ditebak, kedua melakukan config pada ssh bruteforce, ketiga menginstall tool yang dapat membantu keamanan salah satu contohnya adalah file2ban.
 * Ketika penetrasi dilakukan dengan NCrack dimana service FILE 2 BAN di server side sedang running, host side dapat menemukan password yang dari user yang ingin kita cari, akan tetapi secara otomatis ip address dari host side akan di banned sehingga tidak dapat melakukan komunikasi dengan server side.
