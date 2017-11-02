@@ -89,8 +89,37 @@ sudo apt-get update
 mysql -u root -p
 ```
 
+![Setting MYSQL 1](install_wordpress/wordpress_2_setting_mysql.png)
 
--> 1 2
+* Anda akan diminta memasukkan kata sandi yang Anda tetapkan untuk akun root MySQL saat Anda menginstal perangkat lunak. Anda kemudian akan diberi command prompt MySQL.
+
+Pertama, kita bisa membuat database terpisah yang bisa dikendalikan WordPress. Anda bisa memanggil ini apapun yang Anda mau, tapi saya akan menyebutnya wordpress karena bersifat deskriptif dan sederhana. Masukkan perintah ini untuk membuat database:
+
+```
+CREATE USER wordpressuser@localhost IDENTIFIED BY 'password';
+```
+
+* Pada titik ini, Anda memiliki database dan akun pengguna, masing-masing dibuat khusus untuk WordPress. Namun, kedua komponen ini belum memiliki hubungan. Pengguna tidak memiliki akses ke database.
+
+* Mari kita perbaiki dengan memberikan akses pengguna akun kami ke database kami dengan perintah ini:
+
+```
+GRANT ALL PRIVILEGES ON wordpress.* TO wordpressuser@localhost;
+```
+
+* Sekarang pengguna memiliki akses ke database. Kita perlu menyiram hak istimewa sehingga instance MySQL saat ini mengetahui tentang perubahan hak istimewa yang baru saja kita buat:
+
+```
+FLUSH PRIVILEGES;
+```
+
+* We're all set now. We can exit out of the MySQL prompt by typing:
+
+```
+exit
+```
+
+
 ##### b. Setting Apache2 + Dependencies
 -> 4 7 8 9 10
 ##### c. Setting Wordpress
