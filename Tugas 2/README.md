@@ -110,8 +110,34 @@ exit
 
 ##### b. Setting Apache2 + Dependencies
 
+* Untuk install PHP5 kita dapat mengetikkan script seperti gambar dibawah
 
--> 4 7 8 9 10
+![Setting Apache 2](install_wordpress/wordpress_4_install_php5-gd_libssh2-php.png)
+
+* Server web Apache adalah salah satu server web terpopuler di dunia. Ini terdokumentasi dengan baik, dan telah digunakan secara luas untuk sebagian besar sejarah web, yang menjadikannya pilihan default untuk hosting sebuah situs web.
+
+* Kita bisa menginstal Apache dengan mudah menggunakan manajer paket Ubuntu, apt. Seorang manajer paket mengizinkan kita untuk menginstal perangkat lunak yang paling bebas dari repositori yang dikelola oleh Ubuntu. Anda bisa belajar lebih banyak tentang cara menggunakan apt di sini.
+
+* Untuk tujuan kita, kita bisa memulai dengan mengetikkan perintah berikut:
+
+```
+sudo apt-get update
+sudo apt-get install apache2
+```
+
+![Setting Apache 1](install_wordpress/wordpress_7_install_apache2.png)
+
+* Berikut hasil testing dari apache yang barusan kami install
+
+![Setting Apache 3](install_wordpress/wordpress_8_testing_apache2.png)
+
+* Untuk install PHP5 dan dependency nya kita dapat mengetikkan script seperti gambar dibawah
+
+![Setting Apache 4](install_wordpress/wordpress_9_install_php5_etc.png)
+
+![Setting Apache 5](install_wordpress/wordpress_10_install_php5.png)
+
+
 ##### c. Setting Wordpress
 
 * Selanjutnya, kita akan mendownload file WordPress yang sebenarnya dari situs web proyek.
