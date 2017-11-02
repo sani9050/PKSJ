@@ -76,6 +76,18 @@ sudo apt-get update
 #### 2. Langkah Instalasi Wordpress
 
 ##### a. Setting MYSQL
+
+Langkah pertama yang akan kita ambil adalah persiapan. WordPress menggunakan database relasional untuk mengelola dan menyimpan informasi situs dan pengguna.
+
+Kami telah menginstal MySQL, yang dapat menyediakan fungsionalitas ini, namun kami perlu membuat database dan pengguna untuk WordPress bekerja sama.
+
+Untuk memulai, masuk ke akun root (administratif) MySQL dengan mengeluarkan perintah ini:
+
+```
+mysql -u root -p
+```
+
+
 -> 1 2
 ##### b. Setting Apache2 + Dependencies
 -> 4 7 8 9 10
