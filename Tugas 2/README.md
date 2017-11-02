@@ -191,6 +191,64 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/
 -> 3 5 6 11 12 13 14
 ##### d. Install Plugin
 -> 15
+
+### Penetrasi 
+
+#### Langkah-langkah SQLmap
+1. Download sqlmap
+```
+
+git clone https://github.com/sqlmapproject/sqlmap.git
+```
+
+2. Untuk menjalankan wpscan, masukan command di bawah ini
+```
+
+python sqlmap.py -u 'http://192.168.3.5/?match=1' --level 5 --risk 2 --dbms mysql
+```
+
+![SQLmap 1](sqlmap/sqlmap_1.png)
+![SQLmap 2](sqlmap/sqlmap_2.png)
+
+NOTE
+* 192.168.3.5/?match=1 adalah alamat wordpress yang akan diserang
+
+#### Langkah-langkah WPSCAN
+1. Install dependencies pada ubuntu
+```
+
+sudo apt-get install gcc git ruby2.3 ruby2.3-dev libcurl4-openssl-dev make zlib1g-dev
+```
+
+2. Download wpscan
+```
+
+git clone https://github.com/wpscanteam/wpscan.git
+```
+
+3. Masuk ke dalam folder wpscan lalu install wpscan dengan command
+```
+
+sudo gem install bundler && bundle install --without test
+```
+
+4. Untuk menjalankan wpscan, masukan command di bawah ini
+```
+
+ruby wpscan.rb -u 192.168.3.5 --enumerate vp
+```
+
+![WPScan 1](wpscan/wpscan_1.png)
+![WPScan 2](wpscan/wpscan_2.png)
+![WPScan 3](wpscan/wpscan_3.png)
+![WPScan 4](wpscan/wpscan_4.png)
+![WPScan 5](wpscan/wpscan_5.png)
+
+**NOTE**
+* 192.168.3.5 adalah alamat wordpress yang akan diserang
+* --enumerate adalah command untuk menjalankan semua enumeration tools
+* vp adalah command untuk target plugins yang rentan diserang
+
 ### Kesimpulan dan Saran
 * Terdapat Beberapa cara untuk pengamanan sebuah server dari serangan bruteforce. pertama memilih password server yang susah untuk ditebak, kedua melakukan config pada ssh bruteforce, ketiga menginstall tool yang dapat membantu keamanan salah satu contohnya adalah file2ban.
 * Ketika penetrasi dilakukan dengan NCrack dimana service FILE 2 BAN di server side sedang running, host side dapat menemukan password yang dari user yang ingin kita cari, akan tetapi secara otomatis ip address dari host side akan di banned sehingga tidak dapat melakukan komunikasi dengan server side.
