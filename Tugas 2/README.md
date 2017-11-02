@@ -77,7 +77,7 @@ sudo apt-get update
 
 ##### a. Setting MYSQL
 
-![Setting MYSQL 1](install_wordpress/wordpress_#1_setting_mysql.png)
+![Setting MYSQL 1](install_wordpress/wordpress_1_setting_mysql.png)
 
 * Langkah pertama yang akan kita ambil adalah persiapan. WordPress menggunakan database relasional untuk mengelola dan menyimpan informasi situs dan pengguna.
  
