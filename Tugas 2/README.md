@@ -89,7 +89,7 @@ sudo apt-get update
 mysql -u root -p
 ```
 
-![Setting MYSQL 1](install_wordpress/wordpress_2_setting_mysql.png)
+![Setting MYSQL 2](install_wordpress/wordpress_2_setting_mysql.png)
 
 * Anda akan diminta memasukkan kata sandi yang Anda tetapkan untuk akun root MySQL saat Anda menginstal perangkat lunak. Anda kemudian akan diberi command prompt MySQL.
 
@@ -121,8 +121,73 @@ exit
 
 
 ##### b. Setting Apache2 + Dependencies
+
+
 -> 4 7 8 9 10
 ##### c. Setting Wordpress
+
+* Selanjutnya, kita akan mendownload file WordPress yang sebenarnya dari situs web proyek.
+
+* Untungnya, tim WordPress selalu menghubungkan versi perangkat lunak terbaru yang paling stabil ke URL yang sama, jadi kami bisa mendapatkan versi WordPress paling mutakhir dengan mengetikkan ini:
+
+```
+cd ~
+wget http://wordpress.org/latest.tar.gz
+```
+
+![Setting Wordpress 1](install_wordpress/wordpress_3_download_wordpress.png)
+
+* Ini akan mendownload file terkompresi yang berisi konten direktori arsip dari file WordPress ke direktori home kita.
+
+* Kita bisa mengekstrak file untuk membangun kembali direktori WordPress yang kita butuhkan dengan mengetikkan:
+
+```
+tar xzvf latest.tar.gz
+```
+
+* Ini akan membuat sebuah direktori bernama wordpress di home directory anda.
+
+* Sementara kita mendownload barang, kita juga harus mendapatkan beberapa paket lagi yang kita butuhkan. Kita bisa mendapatkan ini langsung dari repositori default Ubuntu setelah kita memperbarui indeks paket lokal kita:
+
+```
+sudo apt-get update
+sudo apt-get install php5-gd libssh2-php
+```
+
+###### Configure WordPress
+
+* Sebagian besar konfigurasi yang akan kita lakukan akan melalui antarmuka web nanti. Namun, kita perlu melakukan beberapa pekerjaan dari baris perintah sebelum kita bisa menjalankan dan menjalankan ini.
+
+* Mulailah dengan pindah ke direktori WordPress yang baru saja Anda undload:
+
+```
+cd ~/wordpress
+```
+
+* File konfigurasi contoh yang paling sesuai dengan konfigurasi yang kami butuhkan disertakan secara default. Namun, kita perlu menyalinnya ke lokasi file konfigurasi default agar WordPress mengenali file tersebut. Lakukan itu sekarang dengan mengetik:
+
+```
+cp wp-config-sample.php wp-config.php
+```
+
+* Sekarang kita memiliki file konfigurasi untuk digunakan, kita bisa menghasilkan beberapa kunci rahasia yang membantu mengamankan instalasi. WordPress menyediakan generator yang aman untuk nilai-nilai ini sehingga Anda tidak perlu mencoba menghasilkan nilai bagus sendiri. Ini hanya digunakan secara internal, jadi tidak akan merugikan kegunaan untuk memiliki nilai yang kompleks dan aman di sini.
+
+* Untuk mendapatkan nilai aman dari generator kunci rahasia WordPress, ketik:
+
+```
+curl -s https://api.wordpress.org/secret-key/1.1/salt/
+```
+
+* Anda akan mendapatkan kembali nilai unik yang terlihat seperti ini:
+
+```
+
+```
+
+
+
+
+
 -> 3 5 6 11 12 13 14
 ##### d. Install Plugin
 -> 15
