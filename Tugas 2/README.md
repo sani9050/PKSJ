@@ -181,18 +181,153 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/
 * Anda akan mendapatkan kembali nilai unik yang terlihat seperti ini:
 
 ```
-
+define('AUTH_KEY',         '1jl/vqfs<XhdXoAPz9 DO NOT COPY THESE VALUES c_j{iwqD^<+c9.k<J@4H');
+define('SECURE_AUTH_KEY',  'E2N-h2]Dcvp+aS/p7X DO NOT COPY THESE VALUES {Ka(f;rv?Pxf})CgLi-3');
+define('LOGGED_IN_KEY',    'W(50,{W^,OPB%PB<JF DO NOT COPY THESE VALUES 2;y&,2m%3]R6DUth[;88');
+define('NONCE_KEY',        'll,4UC)7ua+8<!4VM+ DO NOT COPY THESE VALUES #`DXF+[$atzM7 o^-C7g');
+define('AUTH_SALT',        'koMrurzOA+|L_lG}kf DO NOT COPY THESE VALUES  07VC*Lj*lD&?3w!BT#-');
+define('SECURE_AUTH_SALT', 'p32*p,]z%LZ+pAu:VY DO NOT COPY THESE VALUES C-?y+K0DK_+F|0h{!_xY');
+define('LOGGED_IN_SALT',   'i^/G2W7!-1H2OQ+t$3 DO NOT COPY THESE VALUES t6**bRVFSD[Hi])-qS`|');
+define('NONCE_SALT',       'Q6]U:K?j4L%Z]}h^q7 DO NOT COPY THESE VALUES 1% ^qUswWgn+6&xqHN&%');
 ```
 
+* Ini adalah baris konfigurasi yang bisa kita tempel langsung di file konfigurasi kita untuk mengatur kunci aman. Salin output yang Anda terima sekarang.
 
+* Selanjutnya, mari kita buka file konfigurasi di editor teks:
 
+```
+nano wp-config.php
+```
 
+* Temukan bagian yang berisi nilai dummy untuk pengaturan tersebut. Ini akan terlihat seperti ini:
 
--> 3 5 6 11 12 13 14
+```
+. . .
+
+define('AUTH_KEY',         'VALUES COPIED FROM THE COMMAND LINE');
+define('SECURE_AUTH_KEY',  'VALUES COPIED FROM THE COMMAND LINE');
+define('LOGGED_IN_KEY',    'VALUES COPIED FROM THE COMMAND LINE');
+define('NONCE_KEY',        'VALUES COPIED FROM THE COMMAND LINE');
+define('AUTH_SALT',        'VALUES COPIED FROM THE COMMAND LINE');
+define('SECURE_AUTH_SALT', 'VALUES COPIED FROM THE COMMAND LINE');
+define('LOGGED_IN_SALT',   'VALUES COPIED FROM THE COMMAND LINE');
+define('NONCE_SALT',       'VALUES COPIED FROM THE COMMAND LINE');
+
+. . .
+```
+
+![Setting Wordpress 2](install_wordpress/wordpress_5_copy_api_key.png)
+
+* Setelah itu, satu-satunya modifikasi yang perlu dilakukan adalah parameter yang menyimpan informasi database kami.
+
+* Kita perlu menemukan setting untuk DB_NAME, DB_USER, dan DB_PASSWORD agar WordPress dapat menghubungkan dan mengotentikasi dengan benar ke database yang kita buat.
+
+* Isi nilai parameter ini dengan informasi untuk database yang anda buat. Seharusnya terlihat seperti ini:
+
+```
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'wordpress');
+
+/** MySQL database username */
+define('DB_USER', 'wordpressuser');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'password');
+```
+
+![Setting Wordpress 3](install_wordpress/wordpress_6_seting_database.png)
+
+* Inilah satu-satunya nilai yang perlu Anda ubah.
+
+* Setelah selesai, simpan dan tutup filenya.
+
+###### Copy File ke Document Root
+
+* Sekarang setelah aplikasi kita dikonfigurasi, kita perlu menyalinnya ke akar dokumen Apache, di mana bisa disajikan ke pengunjung situs web kita.
+
+* Salah satu cara termudah dan paling dapat diandalkan untuk mentransfer file dari direktori ke direktori adalah dengan perintah rsync. Ini menjaga hak akses dan memiliki fitur integritas data yang baik.
+
+* Lokasi root dokumen pada panduan 14.3 LAMP Ubuntu adalah / var / www / html /. Kita bisa mentransfer file WordPress kita disana dengan mengetikkan:
+
+```
+sudo rsync -avP ~/wordpress/ /var/www/html/
+```
+
+![Setting Wordpress 3](install_wordpress/wordpress_11_resync_wordpress_var_www.png)
+
+* Ini akan dengan aman menyalin semua isi dari direktori yang Anda kumpulkan ke akar dokumen.
+
+* Kita sekarang harus pindah ke akar dokumen untuk membuat beberapa perubahan perizinan akhir
+
+```
+cd /var/www/html
+```
+
+* Anda perlu mengubah kepemilikan file kami untuk meningkatkan keamanan.
+
+* Kami ingin memberikan kepemilikan pengguna kepada pengguna biasa dan non-root (dengan hak istimewa sudo) yang Anda rencanakan untuk digunakan untuk berinteraksi dengan situs Anda. Ini bisa menjadi pengguna reguler Anda jika Anda mau, namun beberapa mungkin menyarankan agar Anda membuat pengguna tambahan untuk proses ini. Terserah Anda yang Anda pilih.
+
+* Untuk panduan ini, kami akan menggunakan akun yang sama dengan yang kami siapkan selama panduan penyiapan server awal, yang kami sebut demo. Ini adalah akun saya yang melakukan semua tindakan dari panduan ini.
+
+* Kepemilikan grup yang akan kami berikan ke proses server web kami, yaitu www-data. Ini akan memungkinkan Apache untuk berinteraksi dengan konten seperlunya.
+
+* Kami dapat dengan cepat menetapkan nilai kepemilikan ini dengan mengetikkan:
+
+```
+sudo chown -R demo:www-data *
+```
+
+* Ini akan mengatur properti kepemilikan yang kita cari.
+
+* Sementara kita berurusan dengan kepemilikan dan perizinan, kita juga harus mempertimbangkan untuk memberikan kepemilikan yang benar pada direktori upload kami. Ini akan memungkinkan kami mengunggah gambar dan konten lainnya ke situs kami. Saat ini, izin terlalu ketat.
+
+* Pertama, mari kita membuat direktori upload secara manual di bawah direktori isi wp di root dokumen kita. Ini akan menjadi direktori induk konten kami:
+
+```
+mkdir /var/www/html/wp-content/uploads
+```
+
+* Kami memiliki direktori sekarang untuk menampung file upload, namun izinnya masih terlalu ketat. Kita perlu mengizinkan server web itu sendiri untuk menulis ke direktori ini. Kita bisa melakukan ini dengan menetapkan kepemilikan grup dari direktori ini ke server web kita, seperti ini:
+
+```
+sudo chown -R :www-data /var/www/html/wp-content/uploads
+```
+
+* Ini akan memungkinkan server web membuat file dan direktori di bawah direktori ini, yang memungkinkan kita untuk mengupload konten ke server.
+
+###### Instalasi Lengkap Web Browser
+
+* Setelah Anda memiliki file Anda di tempat dan perangkat lunak Anda dikonfigurasi, Anda dapat menyelesaikan penginstalan melalui antarmuka web.
+
+* Di browser web Anda, navigasikan ke nama domain server atau alamat IP publik Anda:
+
+```
+http://server_domain_name_or_IP
+```
+
+* Anda akan melihat halaman konfigurasi awal WordPress, di mana Anda akan membuat akun administrator awal:
+
+![Setting Wordpress 4](install_wordpress/wordpress_12_halaman_utama.png)
+
+* Isi informasi untuk situs dan akun administratif yang ingin Anda buat. Setelah selesai, klik tombol install di bagian bawah.
+
+![Setting Wordpress 5](install_wordpress/wordpress_13_setting.png)
+
+* WordPress akan mengkonfirmasi pemasangannya, dan kemudian meminta Anda untuk masuk dengan akun yang baru Anda buat
+
+* Anda akan disajikan dengan antarmuka WordPress:
+
+![Setting Wordpress 6](install_wordpress/wordpress_14_dashboard.png)
+
 ##### d. Install Plugin
--> 15
+
+* Untuk menginstal Plugin Video Player buka halaman website dan pilih tombol download
+https://wordpress.org/plugins/player/
+
+![Install Plugin 1](install_wordpress/wordpress_15_install_video_player.png)
+
+
 ### Kesimpulan dan Saran
-* Terdapat Beberapa cara untuk pengamanan sebuah server dari serangan bruteforce. pertama memilih password server yang susah untuk ditebak, kedua melakukan config pada ssh bruteforce, ketiga menginstall tool yang dapat membantu keamanan salah satu contohnya adalah file2ban.
-* Ketika penetrasi dilakukan dengan NCrack dimana service FILE 2 BAN di server side sedang running, host side dapat menemukan password yang dari user yang ingin kita cari, akan tetapi secara otomatis ip address dari host side akan di banned sehingga tidak dapat melakukan komunikasi dengan server side.
 
 
