@@ -16,14 +16,11 @@ Pada Tugas 2 PKSJ ini, penulis diminta untuk melakukan uji coba vulnerability pl
 Berikut beberapa Plug-in yang akan penulis uji:
 * Wordpress Video Player
 * League Manager
-* Wordpress Event Calendar
-* Simple Photo Gallery
 
 Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 *WPScan
 *SQLMap
 *Nikto
-*The Mole
 
 ### Dasar Teori
 
@@ -43,12 +40,6 @@ Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 * **Plug-in : League Manager** adalah plugin wordpress untuk management liga sepakbola di halaman wordpress.Ternyata plugin ini dapat dieksploitasi menggunakan blind SQL Injection. Pada referensi disebutkan bahwa dengan menggunakan multiple blind SQL Injenction, user yang dapat login ke dashboard Wordpress dapat mengekstrak informasi dari user lainnya, seperti panjang password bahkan seluruh hash password dari user tersebut.
 (https://wordpress.org/plugins/leaguemanager/)
 
-* **Plug-in : Wordpress Event Calendar** adalah plugin Wordpress yang memungkinkan kita untuk membuat kalender kegiatan dengan mudah. Plugin ini dilengkapi dengan banyak fitur seperti mengubah tema kalender, dll. Plugin ini dipublikasikan secara gratis.
-(https://wordpress.org/plugins/the-events-calendar/)
-
-* **Plug-in : Simple Photo Gallery** adalah plugin Wordpress yang memungkinkan kita untuk membuat gallery photo dengan mudah dan cepat. Plugin ini dipublikasikan secara gratis.
-(https://wordpress.org/plugins/simple-photo-gallery/)
-
 * **WPScan** merupakan tools vulnerability scanner untuk CMS Wordpress yang ditulis dengan menggunakan bahasa pemrograman ruby, WPScan mampu mendeteksi kerentanan umum serta daftar semua plugin dan themes yang digunakan oleh sebuah website yang menggunakan CMS Wordpress.
 (http://anher323.blogspot.co.id/2016/01/cek-celah-vulnerability-cms-wordpress.html)
 
@@ -57,9 +48,6 @@ Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 
 * **Nikto** adalah web scanner Open Source (GPL), yang melakukan tes komprehensif terhadap web server. Nikto memiliki kemampuan mendeteksi 3500 file yang berpotensi mendatangkan bahaya / CGIS. Nikto dapat menguji web server dengan cepat, tetapi mudah dilihat pada log. Tapi sangat berguna untuk menguji suatu web server. Menurut saya nikto ini pembaca web server yang memiliki celah keamanan CVE maupun OSVDB (Open Source Vulnerability Data Base).
 (https://rixzaldi.wordpress.com/2017/01/04/nikto-web-vulnerability-scanner/)
-
-* **The Mole** adalah automatic SQL injection berbasis bahasa python. Fungsi kerjanya sama dengan sqlmap, menjadi tool alternatif dari sqlmap.
-
 
 ### Persiapan
 
@@ -322,10 +310,86 @@ http://server_domain_name_or_IP
 
 ##### d. Install Plugin
 
+
 * Untuk menginstal Plugin Video Player buka halaman website dan pilih tombol download
 https://wordpress.org/plugins/player/
 
 ![Install Plugin 1](install_wordpress/wordpress_15_install_video_player.png)
+
+
+
+### Penetrasi 
+
+#### Langkah-langkah NIKTO
+1. Install nikto
+```
+apt-get install nikto
+```
+
+2. Update nikto
+```
+nikto -update
+```
+
+3. Jalankan nikto dengan command dibawah ini
+```
+nikto -h 192.168.3.5
+```
+
+![Nikto 1](nikto/nikto_1.png)
+![Nikto 2](nikto/nikto_2.png)
+
+**NOTE**
+* 192.168.3.5 adalah alamat wordpress yang akan diserang
+
+#### Langkah-langkah SQLmap
+1. Download sqlmap
+```
+git clone https://github.com/sqlmapproject/sqlmap.git
+```
+
+2. Untuk menjalankan wpscan, masukan command di bawah ini
+```
+python sqlmap.py -u 'http://192.168.3.5/?match=1' --level 5 --risk 2 --dbms mysql
+```
+
+![SQLmap 1](sqlmap/sqlmap_1.png)
+![SQLmap 2](sqlmap/sqlmap_2.png)
+
+**NOTE**
+* 192.168.3.5/?match=1 adalah alamat wordpress yang akan diserang
+
+#### Langkah-langkah WPSCAN
+1. Install dependencies pada ubuntu
+```
+sudo apt-get install gcc git ruby2.3 ruby2.3-dev libcurl4-openssl-dev make zlib1g-dev
+```
+
+2. Download wpscan
+```
+git clone https://github.com/wpscanteam/wpscan.git
+```
+
+3. Masuk ke dalam folder wpscan lalu install wpscan dengan command
+```
+sudo gem install bundler && bundle install --without test
+```
+
+4. Untuk menjalankan wpscan, masukan command di bawah ini
+```
+ruby wpscan.rb -u 192.168.3.5 --enumerate vp
+```
+
+![WPScan 1](wpscan/wpscan_1.png)
+![WPScan 2](wpscan/wpscan_2.png)
+![WPScan 3](wpscan/wpscan_3.png)
+![WPScan 4](wpscan/wpscan_4.png)
+![WPScan 5](wpscan/wpscan_5.png)
+
+**NOTE**
+* 192.168.3.5 adalah alamat wordpress yang akan diserang
+* --enumerate adalah command untuk menjalankan semua enumeration tools
+* vp adalah command untuk target plugins yang rentan diserang
 
 
 ### Kesimpulan dan Saran
