@@ -418,6 +418,9 @@ ruby wpscan.rb -u 192.168.3.5 --enumerate vp
 * vp adalah command untuk target plugins yang rentan diserang
 
 
-### Kesimpulan dan Saran
+### Kesimpulan
+Pada percobaan kali ini dilakukan pengetesan vunerability pada sebuah website pada kasus ini kami menggunakan Wordpress. Wordpress merupakan sebuah CMS yang Opensource yang sangat populer. sehingga seiring bertambahnya waktu banyak orang yang mencari kelemahan keamanannya untuk niat baik ataupun buruk. saat ini sudah banyak tools yang mempermudah pencarian kelemahan dasar dari CMS Wordpress ini seperti WPScan, SQLMap, dll. sehingga kita harus lebih berhati-hati dalam proses melakukan deploy pada sebuah website.
 
-
+### Saran
+1. jika melakukan pemasangan sebuah plugin pada aplikasi kita coba cek dulu apakah plugin itu aman atau tidak.
+2. setelah melakukan deployment coba lakukan scan menggunakan scanner vunerable dasar sehingga kita tahu bahaya-bahaya dasar yang dapat menyerang.
