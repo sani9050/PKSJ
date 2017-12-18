@@ -1,4 +1,4 @@
-### Pendahuluan
+## Pendahuluan
 
 Pada Tugas Final PKSJ ini, penulis diminta untuk melakukan uji coba vulnerability DVWA.
 
@@ -9,7 +9,7 @@ Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 *Metasploit
 *SqlMap
 
-### Daftar Isi
+## Daftar Isi
 - [Konfigurasi Awal](konfigurasi_awal.md)
 - [Lesson 4: Implementasi Metasploit Command Execution](lesson_4.md)
 - [Lesson 5: Implementasi Tamper Data](lesson_5.md)
