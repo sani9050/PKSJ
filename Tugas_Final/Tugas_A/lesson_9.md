@@ -6,7 +6,7 @@ Inti dari Lesson 9 adalah mendapatkan 7 hal, yaitu:
 3. Test **Cookie Cross Site Scripting (XSS)** attack
 4. Membuat **php/meterpreter/reverse_tcp payload**
 5. Menjalankan **php/meterpreter/reverse_tcp listener**
-6. Mengunggah **PHP paload** lewat **DVWA Upload Screen**
+6. Mengunggah **PHP payload** lewat **DVWA Upload Screen**
 7. Test **PHP Payload** menggunakan **Cross Site Scripting (XSS) attack**
 
 **NOTE**
@@ -197,4 +197,4 @@ http://192.168.1.103/dvwa/hackable/uploads/xss.html
 
 ### Kesimpulan Lesson 9
 
-Menggunakan **XSS** dapat mengetahui konten dari **Database**
+Menggunakan **XSS** dapat mengetahui konten dari **Database** menggunakan **PHP Payload**
