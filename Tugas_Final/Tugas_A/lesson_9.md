@@ -1,6 +1,6 @@
 ## LESSON 9
 
-Inti dari Lesson 10 adalah mendapatkan 7 hal, yaitu:
+Inti dari Lesson 9 adalah mendapatkan 7 hal, yaitu:
 1. Test **Basic Cross Site Scripting (XSS)** attack
 2. Test **Iframe Cross Site Scripting (XSS)** attack
 3. Test **Cookie Cross Site Scripting (XSS)** attack
