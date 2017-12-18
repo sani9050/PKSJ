@@ -130,3 +130,6 @@ echo "select * from mysql.user;" | mysql -uroot -psanisani
 Hasil yang akan didapat adalah:
 ![SS 11](LESSON_4/11.png)
 
+### Kesimpulan Lesson 4
+
+Menggunakan Metaeksploit untuk menambah user yang tidak terautentikasi sangat berbahaya karena dapat melakukan pencurian data.
