@@ -1,6 +1,6 @@
 ## LESSON 6
 
-Inti dari Lesson 6 adalah implementasi SQL Injection supaya mendapatkan **Username** dan **Password** yang terdapat dalam **Daabase**
+Inti dari Lesson 6 adalah implementasi SQL Injection supaya mendapatkan **Username** dan **Password** yang terdapat dalam **Database**
 
 **NOTE**
 - IP yang digunakan adalah sesuai dengan IP tempat DVWA ter-deploy
