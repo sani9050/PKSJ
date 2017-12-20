@@ -149,13 +149,15 @@ $ vboxmanage startvm "windowsxp"
 ```
 ![SS 1](IMG/1.png)
 - config IP
-![SS 2](IMG/2.png)
-- Matikan Firewall dan autoupdate
-![SS 3](IMG/3.png)
-- install Guest Additions pada virtual box
-![SS 4](IMG/4.png)
-- 
 ![SS 5](IMG/5.png)
+
+- Matikan Firewall dan autoupdate
+![SS 4](IMG/4.png)
+
+- install Guest Additions pada virtual box
+![SS 3](IMG/3.png)
+![SS 2](IMG/2.png)
+
 configurasi network pada Guest OS
 matikan update otomatis dan firewall
 - instalasi python 2.7
