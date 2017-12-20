@@ -3,7 +3,7 @@
 
 [![N|Solid](https://www.upcloud.com/support/wp-content/uploads/2015/12/snort_logo-300x164.png)](https://www.snort.org/)
 
------
+
 
 **Snort adalah sebuah software yang berguna untuk mengamati aktivitas dalam suatu jaringan komputer. Snort dapat digunakan sebagai suatu Network Intrusion Detection System (NIDS) yang berskala ringan (lightweight).**
 
@@ -11,10 +11,8 @@
 
 ## Cara Kerja SNORT
 
-
 ![N|Solid](https://almaspens.files.wordpress.com/2016/04/capture.png)
 
------
 
 ## Komponen – komponen Snort IDS (Intrusion Detection System) meliputi :
 
@@ -25,7 +23,128 @@
 * **Alert** : catatan serangan pada deteksi penyusupan. Jika Snort engine mendeteksi paket data yang lewat sebagai sebuah serangan, maka snort engine akam mengirimkan alert berupa log file. Kemudian alert tersebut akan tersimpan di dalam database.
 
 
------
+## Persiapan Sebelum Install Snort :
+
+> Pertama-tama Anda perlu menginstal prerequired software sebelum menginstal Snort.
+Jalankan perintah berikut.
+
+```
+sudo apt install -y gcc libpcre3-dev zlib1g-dev libpcap-dev openssl libssl-dev libnghttp2-dev libdumbnet-dev bison flex libdnet
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_1.png)
+
+> Jika sudah terinstall akan seperti gambar dibawah ini. 
+
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_2.png)
+
+> Setelah prerequired software berhasil di install, anda dapat melanjutkan untuk mendownload dan menginstall Snort secara manual dari sumber yang ada.
+
+## Installasi Snort :
+
+> **Installasi Snort di Ubuntu terdiri dari beberapa langkah**:
+   * mendownload kode
+   * mengonfigurasinya
+   * mengkompilasi kode
+   * menginstalnya ke direktori yang sesuai
+   * mengkonfigurasi aturan deteksi
+
+
+### Step 1 : 
+Mulailah dengan membuat folder download sementara ke direktori home atau direktori sesuka Anda dan masuklah kedalam folder tersebut dengan perintah di bawah ini.
+
+```
+mkdir ~/snort_src && cd ~/snort_src
+```
+
+### Step 2 : 
+Snort itself uses something called Data Acquisition library (DAQ) to make abstract calls to packet capture libraries. Download the latest DAQ source package from the Snort website with the wget command underneath. 
+
+```
+wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_3.png)
+
+If the download process was finished, the display will be like this.
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_4.png)
+
+### Step 3 : 
+Then extract the source code and jump into the new directory with the following commands.
+
+```
+tar -xvzf daq-2.0.6.tar.gz
+cd daq-2.0.6
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_5.png)
+
+If the process was finished, the display will be like this.
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_6.png)
+
+### Step 4 : 
+Run the configuration script using its default values, then compile the program with make and finally install DAQ.
+
+```
+./configure && make && sudo make install
+
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_7.png)
+
+If the process was finished, the display will be like this.
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_8.png)
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_9.png)
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_10.png)
+
+With the DAQ installed you can get started with Snort, change back to the download folder.
+
+```
+cd ~/snort_src
+```
+
+### Step 5 : 
+Next, download the Snort source code with wget. 
+
+```
+wget https://www.snort.org/downloads/snort/snort-2.9.9.0.tar.gz
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_11.png)
+
+if the download process wes finished, the display will be like this.
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_12.png)
+
+### Step 6 : 
+And then, extract the source and change into the new directory with these commands.
+
+```
+tar -xvzf snort-2.9.9.0.tar.gz
+cd snort-2.9.9.0
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_13.png)
+
+If the process was finished, the display will be like this.
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_13.png)
+
+### Step 7 : 
+Then configure the installation with sourcefire enabled, run make and make install.
+
+
+```
+./configure --enable-sourcefire && make && sudo make install
+```
+
+> With that done, continue below on how to setup the configuration files.
 
 
 
@@ -43,6 +162,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+https://www.upcloud.com/support/installing-snort-on-ubuntu/
 
 
 > The overriding design goal for Markdown's
