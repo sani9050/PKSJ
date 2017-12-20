@@ -139,32 +139,98 @@ If the process was finished, the display will be like this.
 ### Step 7 : 
 Then configure the installation with sourcefire enabled, run make and make install.
 
-
 ```
 ./configure --enable-sourcefire && make && sudo make install
 ```
 
 > With that done, continue below on how to setup the configuration files.
 
+### Step 8 : 
+Next, you will need to configure Snort for your system. This includes editing some configuration files, downloading the rules that Snort will follow, and taking Snort for a test run.
+
+Start with updating the shared libraries using the command underneath.
+
+```
+sudo ldconfig
+```
+
+### Step 9 : 
+Snort on Ubuntu gets installed to /usr/local/bin/snort directory, it is good practice to create a symbolic link to /usr/sbin/snort.
+
+```
+sudo ln -s /usr/local/bin/snort /usr/sbin/snort
+```
 
 
+### Step 10 : 
+Setting up username and folder structure
+To run Snort on Ubuntu safely without root access, you should create a new unprivileged user and a new user group for the daemon to run under.
+
+```
+sudo groupadd snort
+sudo useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
+```
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_16.png)
+
+### Step 11 : 
+Then create the folder structure to house the Snort configuration, just copy over the commands below.
+
+```
+sudo mkdir -p /etc/snort/rules
+sudo mkdir /var/log/snort
+sudo mkdir /usr/local/lib/snort_dynamicrules
+```
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_17.png)
+
+### Step 12 : 
+Set the permissions for the new directories accordingly.
+
+```
+sudo chmod -R 5775 /etc/snort
+sudo chmod -R 5775 /var/log/snort
+sudo chmod -R 5775 /usr/local/lib/snort_dynamicrules
+sudo chown -R snort:snort /etc/snort
+sudo chown -R snort:snort /var/log/snort
+sudo chown -R snort:snort /usr/local/lib/snort_dynamicrules
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_18.png)
 
 
+### Step 13 : 
+Create new files for the white and black lists as well as the local rules.
+
+```
+sudo touch /etc/snort/rules/white_list.rules
+sudo touch /etc/snort/rules/black_list.rules
+sudo touch /etc/snort/rules/local.rules
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_19.png)
 
 
+### Step 14 : 
+Then copy over the configuration files from the download folder.
+
+```
+sudo cp ~/snort_src/snort-2.9.9.0/etc/*.conf* /etc/snort
+sudo cp ~/snort_src/snort-2.9.9.0/etc/*.map /etc/snort
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_20.png)
 
 
+### Step 15 : 
+Check whether the installation is successful or not by doing the command below.
+
+```
+snort -V
+```
+
+If successful it will appear as in the picture
 
 
-
-
-
-
-
-
-
-
-
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_install/snort_install_21.png)
 
 
 
