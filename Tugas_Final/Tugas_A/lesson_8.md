@@ -23,7 +23,7 @@ ls -l PHONE_HOME.php
 
 ![SS 1](LESSON_8/1.png)
 
-2. **Edit PHONE_HONE.php**
+2. **Edit PHONE_HOME.php**
 
 ```
 Hilangkan # pada <?php
