@@ -3,11 +3,7 @@
 Pada Tugas Final PKSJ ini, penulis diminta untuk melakukan uji coba vulnerability DVWA.
 
 Berikut beberapa Tools yang kami gunakan dalam tugas ini:
-*DVWA
-*Fedora 14
-*Backtrack
-*Metasploit
-*SqlMap
+**DVWA**, **Fedora 14**, **Backtrack**, **Metasploit**, **SqlMap**
 
 ## Daftar Isi
 - [Konfigurasi Awal](konfigurasi_awal.md)
@@ -18,4 +14,3 @@ Berikut beberapa Tools yang kami gunakan dalam tugas ini:
 - [Lesson 8: Upload PHP via Backdoor Payload](lesson_8.md)
 - [Lesson 9: Cross Site Scripting (XSS)](lesson_9.md)
 - [Lesson 10: Cross Site Request Forgery (CSRF) dan Curl](lesson_10.md)
-- [Kesimpulan dan Saran](kesimpulan_dan_saran.md)
