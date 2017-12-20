@@ -3,11 +3,11 @@
 Pada Tugas Final PKSJ ini, penulis diminta untuk melakukan uji coba vulnerability DVWA.
 
 Berikut beberapa Tools yang kami gunakan dalam tugas ini:
-** DVWA **
-** Fedora 14 **
-** Backtrack **
-** Metasploit **
-** SqlMap **
+**DVWA**
+**Fedora 14**
+**Backtrack**
+**Metasploit**
+**SqlMap**
 
 ## Daftar Isi
 - [Konfigurasi Awal](konfigurasi_awal.md)
