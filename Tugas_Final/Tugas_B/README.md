@@ -155,8 +155,8 @@ $ vboxmanage startvm "windowsxp"
 ![SS 4](IMG/4.png)
 
 - install Guest Additions pada virtual box
-![SS 3](IMG/3.png)
 ![SS 2](IMG/2.png)
+![SS 3](IMG/3.png)
 
 configurasi network pada Guest OS
 matikan update otomatis dan firewall
