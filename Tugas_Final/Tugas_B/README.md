@@ -149,7 +149,6 @@ $ vboxmanage startvm "windowsxp"
 ```
 configurasi network pada Guest OS
 matikan update otomatis dan firewall
-```
 - instalasi python 2.7
 
 - Taking a snapshot
