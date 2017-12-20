@@ -147,16 +147,19 @@ Jalankan perintah untuk menjalankan virtualbox yang telah kita siapkan
 ```
 $ vboxmanage startvm "windowsxp"
 ```
+![SS 1](IMG/1.png)
+- config IP
+![SS 2](IMG/2.png)
+- Matikan Firewall dan autoupdate
+![SS 3](IMG/3.png)
+- install Guest Additions pada virtual box
+![SS 4](IMG/4.png)
+- 
+![SS 5](IMG/5.png)
 configurasi network pada Guest OS
 matikan update otomatis dan firewall
 - instalasi python 2.7
-![SS 1](IMG/1.png)
-![SS 2](IMG/2.png)
-![SS 3](IMG/3.png)
-![SS 4](IMG/4.png)
-![SS 5](IMG/5.png)
 ![SS 6](IMG/6.png)
-![SS 7](IMG/7.png)
 - Taking a snapshot
 ```
 $ vboxmanage snapshot "windowsxp" take "snapshot1" --pause
@@ -213,3 +216,4 @@ dan run web interface:
 ```
 $ sudo Cuckoo web
 ```
+![SS 7](IMG/7.png)
