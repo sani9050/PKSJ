@@ -221,4 +221,6 @@ $ sudo Cuckoo web
 disini kita akan memakai kelihos
 https://github.com/ytisf/theZoo/blob/master/malwares/Binaries/Kelihos/Kelihos.zip
 - ekstract malware dan upload
+![SS 8](IMG/8.png)
 - tunggul dan lihat hasil analisisnya
+![SS 9](IMG/9.png)
