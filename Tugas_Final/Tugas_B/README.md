@@ -104,8 +104,6 @@ $ python vol.py -h
 - Instalasi Cuckoo
 ```
 $ git clone git://github.com/cuckoosandbox/cuckoo.git
-$ useradd cuckoo
-$ chown -R cuckoo:cuckoo /home/cuckoo/
 ```
 
 ### Pesiapan guest
@@ -113,7 +111,6 @@ $ chown -R cuckoo:cuckoo /home/cuckoo/
 - installing VirtualBox
 ```
 $ sudo apt-get install vitualbox
-$ sudo usermod -a -G vboxusers cuckoo
 ```
 
 - Membuat Virtual Machine
@@ -123,16 +120,16 @@ $ vboxmanage modifyvm "windowsxp" --memory 1000 --acpi on --boot1 dvd --nic1 nat
 $ vboxmanage createhd --filename "windowsxp.vdi" --size 12000
 $ vboxmanage storagectl "windowsxp" --name "IDE Controller" --add ide --controller PIIX4  
 $ vboxmanage storageattach "windowsxp" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "windowsxp.vdi"  
-$ vboxmanage storageattach "windowsxp" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /home/cuckoo/windowsxpsp3.iso
+$ vboxmanage storageattach "windowsxp" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /home/{$user}/windowsxpsp3.iso
 $ vboxmanage hostonlyif create
 $ vboxmanage modifyvm "windowsxp" --nic1 hostonly  
 $ vboxmanage modifyvm "windowsxp" --hostonlyadapter1 vboxnet0
 ```
 - membuat share folder host dengan guest
 ```
-$ mkdir -p /home/cuckoo/VirtualBox VMs/windowsxpshare
-$ vboxmanage sharedfolder add "windowsxp" --name "windowsxpshare" --hostpath /home/cuckoo/VirtualBox VMs/windowsxpshare --automount 
-$ cp /home/cuckoo/cuckoo/agent/agent.py /home/cuckoo/VirtualBox VMs/windowsxpshare/agent.pyw
+$ mkdir -p /home/{$user}/VirtualBox\ VMs/windowsxpshare
+$ vboxmanage sharedfolder add "windowsxp" --name "windowsxpshare" --hostpath /home/{$user}/VirtualBox\ VMs/windowsxpshare --automount 
+$ cp /home/{$user}/.cuckoo/agent/agent.py /home/{$user}/VirtualBox VMs/windowsxpshare/agent.pyw
 ```
 - Membuat virtualbox agar bisa mengakses internet
 ```
