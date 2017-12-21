@@ -2,5 +2,5 @@
 
 ### Daftar Isi
 - [Tugas A](Tugas_A/tugas_a.md)
-- [Tugas B](something.md)
-- [Tugas Bonus](something.md)
+- [Tugas B](Tugas_B)
+- [Tugas Bonus](Tugas_Bonus)
