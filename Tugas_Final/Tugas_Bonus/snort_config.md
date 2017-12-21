@@ -58,52 +58,115 @@ Copy dynamicpreprocessor file
 sudo cp -avr src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/* /usr/local/lib/snort_dynamicpreprocessor/
 ```
 
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_2.png)
+
+If the copying proccess was finished, the display will be like this
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_3.png)
+
 ### Step 2 : 
-Comment semua rules
+Comment all rules that exist in /etc/snort/snort.conf by doing the command below
 
 ```
 sudo sed -i "s/include \$RULE\_PATH/#include \$RULE\_PATH/" /etc/snort/snort.conf
 ```
 
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_4.png)
 
 ### Step 3 : 
-Edit file konfigurasi snort
+* Edit snort configuration file, first open the file by doing the command below.
+> you can use another text editor like gedit, vim, vi, etc by changing command subl with your text editor command.
 
+```
 sudo subl /etc/snort/snort.conf
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_5.png)
+
+
+Edit the Snort configuration file
+
+```
+# Path to your rules files (this can be a relative path)
+# Note for Windows users:  You are advised to make this an absolute path,
+# such as:  c:\snort\rules
+var RULE_PATH rules
+var SO_RULE_PATH so_rules
+var PREPROC_RULE_PATH preproc_rules
+
+# If you are using reputation preprocessor set these
+# Currently there is a bug with relative paths, they are relative to where snort is
+# not relative to snort.conf like the above variables
+# This is completely inconsistent with how other vars work, BUG 89986
+# Set the absolute path appropriately
+var WHITE_LIST_PATH rules
+var BLACK_LIST_PATH rules
+
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_6.png)
 
 
 ### Step 4 : 
-Validasi setting
+Validate your snort configuration by doing the command below
+
+```
 snort -T -i enp0s3 -c /etc/snort/snort.conf
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_7.png)
+
+If your configuration was successfully configured, the display will be like this
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_8.png)
 
 
-Menambahkan rules
-Download rule
 
+## Add the Community Rules to Your Snort
+
+
+### Step 5 :
+First, you must download the community rules at Snort official website, you can follow this link
+
+```
 https://www.snort.org/downloads#rules
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_9.png)
 
 
-extract
-tar -xf community-rules.tar
-Buka file tersebut lalu copy file rules ke /etc/snort
+### Step 6 :
+After community rules file was successfully downloaded, extract the file by doing the command below
+
+```
+tar -xf community-rules.   
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_11.png)
 
 
-Copy file konfigurasi snort
+### Step 7 :
+1. After the rules was successfully extracted open the directory file, copy the the rules file "community.rules" to /etc/snort/rules by doing this command below.
+
+```
+sudo cp community.rules /etc/snort/rules
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_10.png)
+
+2. Copy the snort configuratiom file "snort.conf" to /etc/snort by doing this comman below
+
+```
+sudo cp snort.conf /etc/snort/
+```
+
+![N|Solid](https://raw.githubusercontent.com/sani9050/PKSJ/master/Tugas_Final/Tugas_Bonus/img_snort_config/snort_config_12.png)
 
 
-
-
-
-
-
-
-
-
-
-
+## DONE
+Your snort was successfully configured and added the rules by Communty Rules.
 
 
 ## Refference
 
-* https://almaspens.wordpress.com/2016/04/03/snort/
-* https://www.upcloud.com/support/installing-snort-on-ubuntu/
+* https://www.snort.org/downloads/community/opensource.gz
