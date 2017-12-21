@@ -216,3 +216,9 @@ dan run web interface:
 $ sudo Cuckoo web
 ```
 ![SS 7](IMG/7.png)
+
+- Download dan ekstract malware untuk melakukan tes pada repository
+disini kita akan memakai kelihos
+https://github.com/ytisf/theZoo/blob/master/malwares/Binaries/Kelihos/Kelihos.zip
+- ekstract malware dan upload
+- tunggul dan lihat hasil analisisnya
